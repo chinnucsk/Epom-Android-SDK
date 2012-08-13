@@ -9,13 +9,9 @@
     <com.epom.android.view.EpomView android:id="@+id/epomView"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
-                                    app:key="8ded375f9ac9fe65e8ccd84a99b5439c"
+                                    app:key="25300e1984e5d8836e53b49f0ff34cb9"
                                     app:refreshInterval="20" app:adType="BANNER_320X50"
                                     app:viewBackground="black"/>
 
     <Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Button"/>
 </LinearLayout>
-
-
-        <!--4d92428c07a46d0c148d519fead504cb -->
-        <!--MMAd placement key: 390e93f76ac81b9af85df9dc5c6c8364 -->
