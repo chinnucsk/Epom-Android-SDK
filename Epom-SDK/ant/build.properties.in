@@ -1,0 +1,15 @@
+# Compiler settings
+debug.status=on
+warning.not.displaying=off
+compiler.args.string=
+
+# Android SDK settings
+java.jdk.bin.path=/Library/Java/Home/bin
+jdk.home.android.platform.path=/Users/anton/Downloads/android-sdk-macosx
+android.runtime.lib.path = platforms/android-11/android.jar
+
+# Epom Android SDK generation options
+sdk.basedir=/Users/anton/pro/epom-android-sdk/Epom-SDK
+sdk.jar.name=androidSDK
+sdk.zip.name=androidSDK
+

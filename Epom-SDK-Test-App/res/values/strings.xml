@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Epom SDK Test App</string>
+    <string name="content">Some other content</string>
+</resources>

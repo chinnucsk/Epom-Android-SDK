@@ -1,0 +1,7 @@
+<resources>
+    <declare-styleable name="com.epom.android.configuration">
+        <attr name="key" format="string"/>
+        <attr name="refreshInterval" format="integer"/>
+        <attr name="adType" format="string"/>
+    </declare-styleable>
+</resources>

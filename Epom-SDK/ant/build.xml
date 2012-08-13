@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Epom-SDK" default="build">
+    <property file="build.properties"/>
+    <!-- Compiler options (managed from build.properties.in file)-->
+    <property name="compiler.debug" value="${debug.status}"/>
+    <property name="compiler.generate.no.warnings" value="${warning.not.displaying}"/>
+    <property name="compiler.args" value="${compiler.args.string}"/>
+    <patternset id="ignored.files">
+        <exclude name="**/CVS/**"/>
+        <exclude name="**/SCCS/**"/>
+        <exclude name="**/RCS/**"/>
+        <exclude name="**/rcs/**"/>
+        <exclude name="**/.DS_Store/**"/>
+        <exclude name="**/.svn/**"/>
+        <exclude name="**/.pyc/**"/>
+        <exclude name="**/.pyo/**"/>
+        <exclude name="**/*.pyc/**"/>
+        <exclude name="**/*.pyo/**"/>
+        <exclude name="**/.git/**"/>
+        <exclude name="**/*.hprof/**"/>
+        <exclude name="**/_svn/**"/>
+        <exclude name="**/.hg/**"/>
+        <exclude name="**/*.lib/**"/>
+        <exclude name="**/*~/**"/>
+        <exclude name="**/__pycache__/**"/>
+        <exclude name="**/.bundle/**"/>
+        <exclude name="**/*.rbc/**"/>
+    </patternset>
+    <patternset id="library.patterns">
+        <include name="*.war"/>
+        <include name="*.ear"/>
+        <include name="*.apk"/>
+        <include name="*.zip"/>
+        <include name="*.swc"/>
+        <include name="*.egg"/>
+        <include name="*.jar"/>
+    </patternset>
+    <patternset id="compiler.resources">
+        <include name="**/?*.properties"/>
+        <include name="**/?*.xml"/>
+        <include name="**/?*.gif"/>
+        <include name="**/?*.png"/>
+        <include name="**/?*.jpeg"/>
+        <include name="**/?*.jpg"/>
+        <include name="**/?*.html"/>
+        <include name="**/?*.dtd"/>
+        <include name="**/?*.tld"/>
+        <include name="**/?*.ftl"/>
+    </patternset>
+
+    <!-- JDK definitions -->
+    <path id="jdk.classpath.android.platform">
+        <fileset dir="${jdk.home.android.platform.path}">
+            <include name="${android.runtime.lib.path}"/>
+        </fileset>
+    </path>
+
+    <!-- Project Libraries -->
+    <path id="admob.lib.classpath">
+        <pathelement location="${sdk.basedir}/lib/GoogleAdMobAdsSdk-6.0.0.jar"/>
+    </path>
+    <path id="inmobi.lib.classpath">
+        <pathelement location="${sdk.basedir}/lib/InMobiAndroidSDK.jar"/>
+    </path>
+    <path id="smaato.lib.classpath">
+        <pathelement location="${sdk.basedir}/lib/SOMAAndroidSDK2.5.4.jar"/>
+    </path>
+    <path id="millenialmedia.lib.classpath">
+        <pathelement location="${sdk.basedir}/lib/MMAdView.jar"/>
+    </path>
+    <path id="library.android-support-v4.classpath">
+        <pathelement location="${sdk.basedir}/lib/android-support-v4.jar"/>
+    </path>
+    <path id="library.adserverview.classpath">
+        <pathelement location="${sdk.basedir}/lib/adserverview.jar"/>
+    </path>
+    <path id="library.mastadserverview.classpath">
+        <pathelement location="${sdk.basedir}/lib/MASTAdserverView.jar"/>
+    </path>
+    <path id="library.inneractive.classpath">
+        <pathelement location="${sdk.basedir}/lib/inneractiveAdSDK.jar"/>
+    </path>
+    <path id="library.tapit.classpath">
+        <pathelement location="${sdk.basedir}/lib/TapItAdView.jar"/>
+    </path>
+    <path id="library.wapstart.classpath">
+        <pathelement location="${sdk.basedir}/lib/WapStartSDK.jar"/>
+    </path>
+    <path id="library.tapjoy.classpath">
+        <pathelement location="${sdk.basedir}/lib/TapjoyConnect.jar"/>
+    </path>
+
+    <property name="module.jdk.home.epom-sdk" value="${jdk.home.android.platform.path}"/>
+    <property name="module.jdk.bin.epom-sdk" value="${java.jdk.bin.path}"/>
+    <property name="module.jdk.classpath.epom-sdk" value="jdk.classpath.android.platform"/>
+    <property name="compiler.args.epom-sdk" value="${compiler.args}"/>
+    <property name="epom-sdk.output.dir" value="${sdk.basedir}/build.xml"/>
+
+    <path id="epom-sdk.module.bootclasspath">
+        <path refid="admob.lib.classpath"/>
+        <path refid="inmobi.lib.classpath"/>
+        <path refid="smaato.lib.classpath"/>
+        <path refid="millenialmedia.lib.classpath"/>
+        <path refid="library.android-support-v4.classpath"/>
+        <path refid="library.adserverview.classpath" />
+        <path refid="library.mastadserverview.classpath" />
+        <path refid="library.inneractive.classpath" />
+        <path refid="library.tapit.classpath" />
+        <path refid="library.wapstart.classpath" />
+        <path refid="library.tapjoy.classpath" />
+    </path>
+    <path id="epom-sdk.module.production.classpath">
+        <path refid="${module.jdk.classpath.epom-sdk}"/>
+        <path refid="admob.lib.classpath"/>
+        <path refid="inmobi.lib.classpath"/>
+        <path refid="smaato.lib.classpath"/>
+        <path refid="millenialmedia.lib.classpath"/>
+        <path refid="library.android-support-v4.classpath"/>
+        <path refid="library.adserverview.classpath" />
+        <path refid="library.mastadserverview.classpath" />
+        <path refid="library.inneractive.classpath" />
+        <path refid="library.tapit.classpath" />
+        <path refid="library.wapstart.classpath" />
+        <path refid="library.tapjoy.classpath" />
+    </path>
+    <path id="epom-sdk.module.classpath">
+        <path refid="${module.jdk.classpath.epom-sdk}"/>
+        <pathelement location="${epom-sdk.output.dir}"/>
+        <path refid="admob.lib.classpath"/>
+        <path refid="inmobi.lib.classpath"/>
+        <path refid="smaato.lib.classpath"/>
+        <path refid="millenialmedia.lib.classpath"/>
+        <path refid="library.android-support-v4.classpath"/>
+        <path refid="library.adserverview.classpath" />
+        <path refid="library.mastadserverview.classpath" />
+        <path refid="library.inneractive.classpath" />
+        <path refid="library.tapit.classpath" />
+        <path refid="library.wapstart.classpath" />
+        <path refid="library.tapjoy.classpath" />
+    </path>
+    <path id="epom-sdk.runtime.module.classpath">
+        <pathelement location="${epom-sdk.output.dir}"/>
+        <path refid="admob.lib.classpath"/>
+        <path refid="inmobi.lib.classpath"/>
+        <path refid="smaato.lib.classpath"/>
+        <path refid="millenialmedia.lib.classpath"/>
+        <path refid="library.android-support-v4.classpath"/>
+        <path refid="library.adserverview.classpath" />
+        <path refid="library.mastadserverview.classpath" />
+        <path refid="library.inneractive.classpath" />
+        <path refid="library.tapit.classpath" />
+        <path refid="library.wapstart.classpath" />
+        <path refid="library.tapjoy.classpath" />
+    </path>
+
+    <patternset id="excluded.from.module.epom-sdk">
+        <patternset refid="ignored.files"/>
+    </patternset>
+    <patternset id="excluded.from.compilation.epom-sdk">
+        <patternset refid="excluded.from.module.epom-sdk"/>
+    </patternset>
+
+    <path id="epom-sdk.module.sourcepath">
+        <dirset dir="${sdk.basedir}">
+            <include name="src"/>
+            <include name="gen"/>
+        </dirset>
+    </path>
+
+    <target name="compile.module.epom-sdk.production" description="Compile module Epom-SDK">
+        <mkdir dir="${epom-sdk.output.dir}"/>
+        <javac srcdir="${sdk.basedir}/src" destdir="${epom-sdk.output.dir}" debug="${compiler.debug}"
+               nowarn="${compiler.generate.no.warnings}"
+               fork="true" executable="${module.jdk.bin.epom-sdk}/javac" includeantruntime="false">
+            <compilerarg line="${compiler.args.epom-sdk}"/>
+            <bootclasspath refid="epom-sdk.module.bootclasspath"/>
+            <classpath refid="epom-sdk.module.production.classpath"/>
+            <src refid="epom-sdk.module.sourcepath"/>
+            <patternset refid="excluded.from.compilation.epom-sdk"/>
+        </javac>
+        <copy todir="${epom-sdk.output.dir}">
+            <fileset dir="${sdk.basedir}/src">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+            <fileset dir="${sdk.basedir}/gen">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean.module.epom-sdk" description="cleanup module">
+        <delete dir="${epom-sdk.output.dir}"/>
+        <delete dir="${artifacts.temp.dir}"/>
+    </target>
+
+    <target name="init.artifacts">
+        <property name="artifacts.temp.dir" value="${sdk.basedir}/${sdk.jar.name}"/>
+        <property name="artifact.output.epom-sdk:jar" value="${sdk.basedir}/build"/>
+        <mkdir dir="${artifacts.temp.dir}"/>
+        <mkdir dir="${sdk.basedir}/gen"/>
+        <property name="temp.jar.path.Epom_SDK.jar" value="${artifacts.temp.dir}/${sdk.jar.name}.jar"/>
+    </target>
+
+    <target name="artifact.epom-sdk:jar"
+            depends="init.artifacts, clean.module.epom-sdk, compile.module.epom-sdk.production"
+            description="Build &#39;Epom-SDK:jar&#39; artifact">
+        <property name="artifact.temp.output.epom-sdk:jar" value="${artifacts.temp.dir}/Epom_SDK_jar"/>
+        <mkdir dir="${artifact.temp.output.epom-sdk:jar}"/>
+        <jar destfile="${temp.jar.path.Epom_SDK.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+            <zipfileset dir="${epom-sdk.output.dir}"/>
+            <zipfileset src="${sdk.basedir}/lib/InMobiAndroidSDK.jar"/>
+            <zipfileset src="${sdk.basedir}/lib/GoogleAdMobAdsSdk-6.0.0.jar"/>
+            <zipfileset src="${sdk.basedir}/lib/SOMAAndroidSDK2.5.4.jar"/>
+            <zipfileset src="${sdk.basedir}/lib/MMAdView.jar"/>
+            <zipfileset src="${sdk.basedir}/lib/adserverview.jar"/>
+            <zipfileset src="${sdk.basedir}/lib/MASTAdserverView.jar"/>
+            <zipfileset src="${sdk.basedir}/lib/inneractiveAdSDK.jar"/>
+            <zipfileset src="${sdk.basedir}/lib/TapItAdView.jar"/>
+            <zipfileset src="${sdk.basedir}/lib/TapjoyConnect.jar"/>
+            <zipfileset src="${sdk.basedir}/lib/WapStartSDK.jar"/>
+        </jar>
+        <copy file="${temp.jar.path.Epom_SDK.jar}" tofile="${artifact.temp.output.epom-sdk:jar}/${sdk.jar.name}.jar"/>
+        <delete dir="${artifacts.temp.dir}/Epom_SDK_jar/"/>
+    </target>
+
+    <target name="artifact.epom-sdk:zip" depends="artifact.epom-sdk:jar,clean.module.epom-sdk"
+            description="Build Epom-SDK:zip artefact; contains jar distribution and documentation">
+        <zip destfile="${artifacts.temp.dir}/${sdk.zip.name}.zip" update="true">
+            <fileset dir="${artifacts.temp.dir}"/>
+            <fileset dir="${sdk.basedir}/documentation"/>
+        </zip>
+    </target>
+
+    <target name="build" depends="artifact.epom-sdk:zip" description="build"/>
+</project>
